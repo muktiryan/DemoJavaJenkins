@@ -18,7 +18,7 @@ pipeline {
         stage('Deployment Stage') {
             steps {
                 withMaven(maven: 'Default') {
-                    bat 'mvn deploy'
+                    bat 'mvn install'
                 }
             }        
         }
