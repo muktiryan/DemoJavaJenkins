@@ -3,8 +3,11 @@ pipeline {
     stages {
         stage('Test Variable') {
             steps {
-                withCredentials([string(credentialsId: 'WSL_FTP', variable: 'TOKEN')]) {
-                   bat 'echo kampret - $TOKEN '
+                withCredentials([usernamePassword(credentialsId: 'WSL_FTP', passwordVariable: "GIT_PASSWORD", usernameVariable: "GIT_USERNAME")]) {
+                    script {
+                        env.URL_ENCODED_GIT_PASSWORD=URLEncoder.encode(GIT_PASSWORD, "UTF-8")
+                    }
+                        bat "echo ${GIT_USERNAME} and ${URL_ENCODED_GIT_PASSWORD}"
                 }
             }
         }
