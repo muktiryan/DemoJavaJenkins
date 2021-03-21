@@ -1,26 +1,10 @@
 pipeline {
     agent any 
     stages {
-        stage('Compile Stage') {
+        stage('Test Variable') {
             steps {
-                withMaven(maven: 'Default') {
-                    bat 'mvn clean compile'
-                }
+                bat 'echo %path%'
             }
-        }
-        stage('Testing Stage') {
-            steps {
-                withMaven(maven: 'Default') {
-                    bat 'mvn test'
-                }
-            }        
-        }
-        stage('Deployment Stage') {
-            steps {
-                withMaven(maven: 'Default') {
-                    bat 'mvn install'
-                }
-            }        
         }
     }
 }
