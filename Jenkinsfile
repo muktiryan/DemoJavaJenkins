@@ -10,7 +10,7 @@ pipeline {
                     script {
                         env.URL_ENCODED_GIT_USERNAME=URLEncoder.encode(USERNAME, "UTF-8");
                     }
-                        bat "echo ${USERNAME} and ${URL_ENCODED_GIT_PASSWORD}"
+                        bat "echo ${URL_ENCODED_GIT_USERNAME} and ${URL_ENCODED_GIT_PASSWORD}"
                 }
             }
         }
