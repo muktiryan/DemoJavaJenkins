@@ -3,7 +3,9 @@ pipeline {
     stages {
         stage('Test Variable') {
             steps {
-                bat 'echo %path%'
+                withCredentials([string(credentialsId: 'WSL_FTP', variable: 'TOKEN')]) {
+                   bat 'echo kampret - $TOKEN '
+                }
             }
         }
     }
